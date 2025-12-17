@@ -1,0 +1,19 @@
+{
+  "oracle": {
+    "user": "ADMIN",
+    "password": "TuPassword123",
+    "dsn": "tu_servicio_high",
+    "wallet_dir": null,
+    "wallet_password": null
+  },
+  "api": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "reload": true
+  },
+  "jwt": {
+    "secret_key": "tu_clave_secreta_super_segura_cambiar_en_produccion",
+    "algorithm": "HS256",
+    "access_token_expire_minutes": 60
+  }
+}

@@ -1,0 +1,8 @@
+# PyQt6 y componentes GUI
+PyQt6>=6.6.0
+
+# Cliente HTTP
+requests>=2.31.0
+
+# Utilidades
+python-dotenv>=1.0.0
