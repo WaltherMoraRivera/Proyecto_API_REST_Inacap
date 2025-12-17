@@ -1,10 +1,10 @@
 {
   "oracle": {
-    "user": "ADMIN",
-    "password": "TuPassword123",
-    "dsn": "tu_servicio_high",
-    "wallet_dir": null,
-    "wallet_password": null
+    "user": "admin",
+    "password": "Zayrus189918143",
+    "dsn": "basedatos699_medium",
+    "wallet_dir": "C:\\Users\\Walther\\Desktop\\INACAP\\Progra_de_Objetos\\proyectoPyQt6\\Wallet",
+    "wallet_password": "Zayrus189918143"
   },
   "api": {
     "host": "0.0.0.0",

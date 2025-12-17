@@ -46,13 +46,7 @@ def main():
     # Crear repositorio de autenticación
     auth_repo = AuthRepository(api_base_url)
     
-    # Mostrar diálogo de login
-    login_dialog = LoginDialog(auth_repo)
-    
-    if login_dialog.exec() != login_dialog.DialogCode.Accepted:
-        return 0  # Usuario canceló el login
-    
-    # Obtener datos del usuario y token
+    # Variables para almacenar datos del login
     usuario = None
     token = None
     
@@ -61,16 +55,17 @@ def main():
         usuario = user
         token = tok
     
+    # Mostrar diálogo de login
+    login_dialog = LoginDialog(auth_repo)
     login_dialog.login_successful.connect(on_login_successful)
     
-    # Si llegamos aquí, el login fue exitoso
+    if login_dialog.exec() != login_dialog.DialogCode.Accepted:
+        return 0  # Usuario canceló el login
+    
+    # Verificar que se obtuvieron los datos
     if not usuario or not token:
-        # Mostrar login nuevamente
-        login_dialog = LoginDialog(auth_repo)
-        if login_dialog.exec() != login_dialog.DialogCode.Accepted:
-            return 0
-        
-        login_dialog.login_successful.connect(on_login_successful)
+        QMessageBox.critical(None, "Error", "No se pudo obtener información del usuario")
+        return 1
     
     # Crear repositorio de películas con token
     pelicula_repo = PeliculaRepository(api_base_url, token)

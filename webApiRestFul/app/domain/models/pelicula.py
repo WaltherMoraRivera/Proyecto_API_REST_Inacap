@@ -15,4 +15,4 @@ class Pelicula:
     duracion_minutos: int
     genero: str
     clasificacion: str
-    sinopsis: str
+    sinopsis: Optional[str] = None

@@ -80,11 +80,13 @@ INSERT INTO premiacion (id_pelicula, categoria, edicion, posicion, descripcion) 
 INSERT INTO premiacion (id_pelicula, categoria, edicion, posicion, descripcion) VALUES (4, 'Mejor Fotografía', 2025, 1, 'Premio a la mejor fotografía');
 INSERT INTO premiacion (id_pelicula, categoria, edicion, posicion, descripcion) VALUES (5, 'Mejor Sonido', 2025, 1, 'Premio al mejor sonido');
 
--- 12. Usuario (contraseña: admin123 - en producción usar hash real)
+-- 12. Usuario (contraseña hasheada con SHA-256)
+-- admin123 -> 240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9
+-- user123 -> f03881a88c6e39135f0ecc60efd609131b36a9d4a57a3e8b80ab7ad8ab5d1e13
 INSERT INTO usuario (username, password_hash, nombre_completo, email, rol) 
-VALUES ('admin', 'admin123', 'Administrador Sistema', 'admin@festival.cl', 'admin');
+VALUES ('admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'Administrador Sistema', 'admin@festival.cl', 'admin');
 
 INSERT INTO usuario (username, password_hash, nombre_completo, email, rol) 
-VALUES ('usuario1', 'user123', 'Usuario Prueba', 'usuario@festival.cl', 'usuario');
+VALUES ('usuario1', 'f03881a88c6e39135f0ecc60efd609131b36a9d4a57a3e8b80ab7ad8ab5d1e13', 'Usuario Prueba', 'usuario@festival.cl', 'usuario');
 
 COMMIT;

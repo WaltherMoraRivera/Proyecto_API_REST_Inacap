@@ -23,11 +23,22 @@ class PeliculaRepository:
         """Obtiene todas las películas"""
         with self._connection.get_connection() as conn:
             cursor = conn.cursor()
-            cursor.callproc("sp_listar_peliculas", [cursor])
+            ref_cursor = conn.cursor()
+            
+            cursor.callproc("sp_listar_peliculas", [ref_cursor])
             
             peliculas = []
-            for row in cursor.getvalue(0):
-                peliculas.append(Pelicula(*row))
+            for row in ref_cursor:
+                peliculas.append(Pelicula(
+                    id_pelicula=row[0],
+                    titulo=row[1],
+                    pais_origen=row[2],
+                    director=row[3],
+                    duracion_minutos=row[4],
+                    genero=row[5],
+                    clasificacion=row[6],
+                    sinopsis=row[7] if len(row) > 7 else None
+                ))
             
             return peliculas
     
@@ -49,7 +60,16 @@ class PeliculaRepository:
             
             row = ref_cursor.fetchone()
             if row:
-                return Pelicula(*row)
+                return Pelicula(
+                    id_pelicula=row[0],
+                    titulo=row[1],
+                    pais_origen=row[2],
+                    director=row[3],
+                    duracion_minutos=row[4],
+                    genero=row[5],
+                    clasificacion=row[6],
+                    sinopsis=row[7] if len(row) > 7 else None
+                )
             return None
     
     def create(self, pelicula: Pelicula) -> int:
